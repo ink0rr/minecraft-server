@@ -1,0 +1,8 @@
+{
+  "tasks": {
+    "gen": "deno run -A ./scripts/gen.ts && deno fmt"
+  },
+  "fmt": {
+    "lineWidth": 120
+  }
+}
