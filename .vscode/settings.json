@@ -4,5 +4,6 @@
   "editor.defaultFormatter": "denoland.vscode-deno",
   "editor.rulers": [
     120
-  ]
+  ],
+  "files.eol": "\n"
 }
