@@ -17,4 +17,4 @@ ${
     .replace(/(export const \w+:.*);/g, "$1 = mock;")
 }`;
 
-Deno.writeTextFile("./mod.ts", text);
+await Deno.writeTextFile("./mod.ts", text);

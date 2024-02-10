@@ -961,6 +961,31 @@ export class Block {
 }
 
 /**
+ * Base class for downstream Component implementations.
+ */
+export class Component {
+  private constructor() {}
+  /**
+   * @remarks
+   * Identifier of the component.
+   */
+  readonly typeId: string = mock;
+  /**
+   * @remarks
+   * Returns whether the component is valid. A component is
+   * considered valid if its owner is valid, in addition to any
+   * addition to any additional validation required by the
+   * component.
+   *
+   * @returns
+   * Whether the component is valid.
+   */
+  isValid(): boolean {
+    return mock;
+  }
+}
+
+/**
  * Base type for components associated with blocks.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -1141,6 +1166,34 @@ export class ButtonPushAfterEvent extends BlockEvent {
 }
 
 /**
+ * Provides an adaptable interface for callers to subscribe to
+ * an event that fires when a button is pushed.
+ */
+export class IButtonPushAfterEventSignal {
+  private constructor() {}
+  /**
+   * @remarks
+   * Subscribes to the event.
+   *
+   * This function can't be called in read-only mode.
+   */
+  subscribe(callback: (arg: ButtonPushAfterEvent) => void): (arg: ButtonPushAfterEvent) => void {
+    return mock;
+  }
+  /**
+   * @remarks
+   * Unsubscribes from the event.
+   *
+   * This function can't be called in read-only mode.
+   *
+   * @throws This function can throw errors.
+   */
+  unsubscribe(callback: (arg: ButtonPushAfterEvent) => void): void {
+    return mock;
+  }
+}
+
+/**
  * Manages callbacks that are connected to when a button is
  * pushed.
  */
@@ -1222,31 +1275,6 @@ export class CommandResult {
    * applications of this command.
    */
   readonly successCount: number = mock;
-}
-
-/**
- * Base class for downstream Component implementations.
- */
-export class Component {
-  private constructor() {}
-  /**
-   * @remarks
-   * Identifier of the component.
-   */
-  readonly typeId: string = mock;
-  /**
-   * @remarks
-   * Returns whether the component is valid. A component is
-   * considered valid if its owner is valid, in addition to any
-   * addition to any additional validation required by the
-   * component.
-   *
-   * @returns
-   * Whether the component is valid.
-   */
-  isValid(): boolean {
-    return mock;
-  }
 }
 
 /**
@@ -2942,6 +2970,16 @@ export class Entity {
 }
 
 /**
+ * Base class for downstream entity components.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class EntityComponent extends Component {
+  private constructor() {
+    super();
+  }
+}
+
+/**
  * This is a base abstract class for any entity component that
  * centers around a number and can have a minimum, maximum, and
  * default defined value.
@@ -3102,16 +3140,6 @@ export class EntityColorComponent extends EntityComponent {
    */
   value: number = mock;
   static readonly componentId = "minecraft:color";
-}
-
-/**
- * Base class for downstream entity components.
- */
-// @ts-ignore Class inheritance allowed for native defined classes
-export class EntityComponent extends Component {
-  private constructor() {
-    super();
-  }
 }
 
 /**
@@ -4391,34 +4419,6 @@ export class FeedItemEffect {
    * include 'fire_resistance' or 'regeneration'.
    */
   readonly name: string = mock;
-}
-
-/**
- * Provides an adaptable interface for callers to subscribe to
- * an event that fires when a button is pushed.
- */
-export class IButtonPushAfterEventSignal {
-  private constructor() {}
-  /**
-   * @remarks
-   * Subscribes to the event.
-   *
-   * This function can't be called in read-only mode.
-   */
-  subscribe(callback: (arg: ButtonPushAfterEvent) => void): (arg: ButtonPushAfterEvent) => void {
-    return mock;
-  }
-  /**
-   * @remarks
-   * Unsubscribes from the event.
-   *
-   * This function can't be called in read-only mode.
-   *
-   * @throws This function can throw errors.
-   */
-  unsubscribe(callback: (arg: ButtonPushAfterEvent) => void): void {
-    return mock;
-  }
 }
 
 /**
